@@ -1,0 +1,44 @@
+{% extends "main_page_student.html" %}
+
+{% load verbose_names %}
+
+{% block academic_plan %}
+
+	<!--{% for academicplan in academicplans %}
+
+		{% for subject in academicplan.subject.all %}
+			<p>{{ subject }}</p>
+		{% endfor %}
+
+	{% endfor %}-->
+	<h2 class="sub-header">Учебные планы группы {{ studentgroup }}</h2>
+	{% for academicplan in academicplans %}
+		<h3 class="sub-header">Учебный план за {{ academicplan.year }} {% get_verbose_field_name academicplan "year" %}, {% get_verbose_field_name academicplan "semester" %} {{ academicplan.semester }}</h3>
+		<div class="table-responsive">
+			<table class="table table-striped">
+				<thead>
+					<tr>
+						<th>{% get_verbose_field_name academicplan "subject" %}</th>
+						<th>{% get_verbose_field_name academicplan "teacher" %}</th>
+						<th>{% get_verbose_field_name academicplan "taskcoursework" %}</th>
+					</tr>
+				</thead>
+				<tbody>
+
+				{% for astt in academicplan.astts %}
+					<tr>
+						<td>{{ astt.subject }}</td>
+						<td>{{ astt.teacher }}</td>
+						{% if astt.taskcoursework == None %}
+							<td>Задание отсутствует</td>
+						{% else %}
+							<td><a href="/student/coursework/{{ astt.taskcoursework.id }}/">Имеется задание</a></td>
+						{% endif%}
+					</tr>
+				</tbody>
+				{% endfor %}
+				
+			</table>
+		</div>
+	{% endfor %}
+{% endblock %}

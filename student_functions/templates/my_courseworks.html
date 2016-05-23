@@ -1,0 +1,15 @@
+{% extends "main_page_student.html" %}
+
+{% block my_courseworks %}
+
+	<h2 class="sub-header">Мои курсовые работы/проекты за {{ semester }} семестр</h2>
+
+	{% for key, values in subjects.items %}
+		{% for key2, values2 in values.items %}
+			{% for value in values2 %}
+				<h3><a href="/student/mycourseworks/{{ key.id }}/{{ key2.id }}/{{ value.id }}/">{{ key }}</a></h3>
+			{% endfor %}	
+		{% endfor %}
+	{% endfor %}
+
+{% endblock %}

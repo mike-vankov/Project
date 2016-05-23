@@ -1,0 +1,25 @@
+{% extends "main_page_student.html" %}
+
+{% block show_task_course_work %}
+
+	<h2>Задание на курсовую работу/проект по предмету "{{ subject_title }}" за {{ semester }} семестр</h2>
+	<h3 class="sub-header">Преподаватель: {{ teacher }}</h3>
+	{% if coursework_task == None %}
+		<h3>Задание на курсовую работу отсутствует!</h3>
+	{% else %}
+		<h4>{{ coursework_task.title }}</h4>
+		<blockquote>
+			<p>
+				{{ coursework_task.text }}
+			</p>
+		</blockquote>
+		<h5>Дата создания: {{ coursework_task.date_create }}</h5>
+		<h5>Дата редактирования: {{ coursework_task.date_update }}</h5>
+
+		<form action="/student/mycourseworks/{{ subject_id }}/{{ course_id }}/{{ semester_id }}/{{ coursework_task.id }}/" method="post">
+			{% csrf_token %}
+			<input type="submit" class="button" value="Мои работы"></input>
+		</form>
+	{% endif %}
+
+{% endblock %}

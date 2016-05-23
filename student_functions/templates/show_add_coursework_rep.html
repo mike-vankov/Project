@@ -1,0 +1,12 @@
+{% extends "main_page_student.html" %}
+
+{% block show_add_task_course_work_rep %}
+
+	<h2>Добавть работу по курсовой работе/проекту по предмету "{{ subject_title }}" за {{ semester }} семестр</h2>
+	<form action="/student/mycourseworks/{{ subject_id }}/{{ course_id }}/{{ semester_id }}/{{ task_id }}/add/update/" method="post">
+		{% csrf_token %}
+		{{ form }}
+		<input type="submit" class="button" value="Добавить"></input>
+	</form>
+
+{% endblock %}

@@ -1,0 +1,40 @@
+{% extends "main_page_student.html" %}
+
+{% load verbose_names %}
+
+{% block academic_plan %}
+
+	<!--{% for academicplan in academicplans %}
+
+		{% for subject in academicplan.subject.all %}
+			<p>{{ subject }}</p>
+		{% endfor %}
+
+	{% endfor %}-->
+	<h2 class="sub-header">Учебные планы</h2>
+
+		<h3 class="sub-header">Учебный план за {{ astt.academicplan.year }}</h3>
+		<div class="table-responsive">
+			<table class="table table-striped">
+				<thead>
+					<tr>
+						<th>{% get_verbose_field_name astt "subject" %}</th>
+						<th>{% get_verbose_field_name astt "teacher" %}</th>
+						<th>{% get_verbose_field_name astt "taskcoursework" %}</th>
+					</tr>
+				</thead>
+				<tbody>
+
+				{% for astt in astts %}
+					<tr>
+						<td>{{ astt.subject }}</td>
+						<td>{{ astt.teacher }}</td>
+						<td>{{ astt.taskcoursework }}</td>
+					</tr>
+				</tbody>
+				{% endfor %}
+				
+			</table>
+		</div>
+
+{% endblock %}
