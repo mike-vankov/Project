@@ -1,0 +1,19 @@
+{% load bootstrap3 %}
+
+{% bootstrap_css %}
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Система учета курсовых работ</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+		<link rel="stylesheet" type="text/css" href="/static/css/main_page.css">
+	</head>
+	<body>
+		{% block main_page_student %}
+		{% endblock %}
+
+		{% block main_page_teacher %}
+		{% endblock %}
+	</body>
+</html>

@@ -1,0 +1,36 @@
+{% load bootstrap3 %}
+
+{% bootstrap_css %}
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Войдите::Система учета курсовых работ</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+		<link rel="stylesheet" type="text/css" href="/static/css/login.css">
+	</head>
+	<body>
+		<div class="container">
+			<form action="/auth/login/" method="post" class="form-signin">
+				{% csrf_token %}
+				<h2 class="form-signin-heading">Войдите</h2>
+				<label for="inputlogin" class="sr-only">Имя пользователя</label>
+				<input type="login" id="inputlogin" name="login" class="form-control" placeholder="Имя пользователя" required="" autofocus="">
+				<label for="inputPassword" class="sr-only">Password</label>
+				<input type="password" id="inputPassword" name="password" class="form-control" placeholder="Пароль" required="">
+				<div class="checkbox">
+					<label>
+						<input type="checkbox" name="remember" value="remember-me"> Запомнить
+					</label>
+				</div>
+				{% if login_error %}
+					<div class="alert alert-danger">
+						<strong>Ошибочка!</strong>
+						<p>{{ login_error }}</p>
+					</div>
+				{% endif %}
+				<button class="btn btn-lg btn-primary btn-block" type="submit">Войти</button>
+			</form>
+		</div>
+	</body>
+</html>

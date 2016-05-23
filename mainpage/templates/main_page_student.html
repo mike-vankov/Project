@@ -1,0 +1,46 @@
+{% extends "main_page.html" %}
+
+{% block main_page_student %}
+
+<nav class="navbar navbar-default navbar-static-top">
+	<div class="container-fluid">
+
+		<!-- Brand and toggle get grouped for better mobile display -->
+		<!-- Левый угол -->
+		<div class="navbar-header">
+			<a class="navbar-brand" href="/">Система учета курсовых работ</a>
+		</div>
+
+		<!-- Collect the nav links, forms, and other content for toggling -->
+		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+			<ul class="nav navbar-nav">
+				<!--li class="active">
+					<a href="/student/academicplan">Учебный план<span class="sr-only">(current)</span></a>
+				</li-->
+				<li class="active">
+					<a href="/student/mycourseworks">Мои курсовые<span class="sr-only">(current)</span></a>
+				</li>
+				<li><a href="#">Предметы</a></li>
+			</ul>
+
+			<!-- Правый угол -->
+			<ul class="nav navbar-nav navbar-right">
+				<li><a href="">Группа: {{ studentgroup }}</a></li>
+				<li>
+					<a class="nav-link-login" href="/auth/logout/">Выйти ({{ username }})</a>
+				</li>
+			</ul>
+		</div><!-- /.navbar-collapse -->
+
+	</div><!-- /.container-fluid -->
+</nav>
+<div class="content">
+	{% block fail_student %}{% endblock %}
+	{% block academic_plan %}{% endblock %}
+	{% block my_courseworks %}{% endblock %}
+	{% block show_task_course_work %}{% endblock %}
+	{% block show_task_course_work_rep %}{% endblock %}
+	{% block show_add_task_course_work_rep %}{% endblock %}
+</div>
+
+{% endblock %}

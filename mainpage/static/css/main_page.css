@@ -1,0 +1,14 @@
+.content {
+  margin-left: 1%;
+  margin-right: 1%;
+}
+
+input, label, textarea {
+	display: block;
+	width: 50%;
+}
+
+.button {
+	margin-top: 20px;
+	width: 15%;
+}

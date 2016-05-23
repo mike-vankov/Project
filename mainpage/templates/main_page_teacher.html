@@ -1,0 +1,40 @@
+{% extends "main_page.html" %}
+
+{% block main_page_teacher %}
+
+<nav class="navbar navbar-default navbar-static-top">
+	<div class="container-fluid">
+
+		<!-- Brand and toggle get grouped for better mobile display -->
+		<!-- Левый угол -->
+		<div class="navbar-header">
+			<a class="navbar-brand" href="/">Система учета курсовых работ</a>
+		</div>
+
+		<!-- Collect the nav links, forms, and other content for toggling -->
+		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+			<ul class="nav navbar-nav">
+			<li class="active"><a href="/teacher/groups/">Группы<span class="sr-only">(current)</span></a></li>
+			<!--li><a href="#">Link</a></li-->
+			</ul>
+
+			<!-- Правый угол -->
+			<ul class="nav navbar-nav navbar-right">
+				<li><a class="nav-link-login" href="/auth/logout/">Выйти ({{ username }})</a></li>
+			</ul>
+		</div><!-- /.navbar-collapse -->
+
+	</div><!-- /.container-fluid -->
+</nav>
+<div class="content">
+	
+	{% block show_my_groups %}{% endblock %}
+	{% block show_group %}{% endblock %}
+	{% block show_task_course_work %}{% endblock %}
+	{% block add_task_course_work %}{% endblock %}
+	{% block edit_task_course_work %}{% endblock %}
+	{% block show_students_course_work %}{% endblock %}
+	{% block show_student_course_work %}{% endblock %}
+	{% block show_student_course_work_2 %}{% endblock %}
+</div>
+{% endblock %}
