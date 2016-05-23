@@ -1,0 +1,27 @@
+{% extends "main_page_teacher.html" %}
+
+{% block show_group %}
+
+	<h2 class="sub-header">Группа {{ group }}</h2>
+	<h3>Мои предметы:</h3>
+	{% for key, value in subjects.items %}
+		{% for key2, value2 in value.items %}
+			{% for x in value2 %}
+				<h4>
+					{{ key }}
+					{% if x.coursework != 0 %}
+						<a href="/teacher/groups/{{ group_id }}/courseworktask/{{ key.id }}/{{ key2.id }}/{{ x.id }}/">(Курсовая работа/проект)</a>
+					{% endif %}
+				</h4>
+			{% endfor %}
+		{% endfor %}
+	{% endfor %}
+
+	<br>
+	
+	<h3>Список группы:</h3>
+	{% for student in students %}
+		<h4>{{ student }}</h4>
+	{% endfor %}
+
+{% endblock %}

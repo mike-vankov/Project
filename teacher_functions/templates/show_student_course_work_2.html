@@ -1,0 +1,15 @@
+{% extends "main_page_teacher.html" %}
+
+{% block show_student_course_work_2 %}
+
+	<h2>Работы по курсовой работе/проекту по предмету "{{ subject_title }}" за {{ semester }} семестр</h2>
+	<h3>Студент: {{ student }}. Группа: {{ student.studentgroup }}</h3>
+	<h4>{{ commit.title }}</h4>
+	<blockquote>
+		<p>
+			{{ commit.text }}
+		</p>
+	</blockquote>
+	<h5>Дата создания: {{ commit.date_create }}</h5>
+
+{% endblock %}

@@ -1,0 +1,23 @@
+{% extends "main_page_teacher.html" %}
+
+{% block show_student_course_work %}
+
+	<h2>Добавленные работы по курсовой работе/проекту по предмету "{{ subject_title }}" за {{ semester }} семестр</h2>
+	<h3>Студент: {{ student }}. Группа: {{ student.studentgroup }}</h3>
+	{% if commits != None %}
+		{% for commit in commits %}
+			<h4><a href="/teacher/groups/{{ group_id }}/courseworktask/{{ subject_id }}/{{ course_id }}/{{ semester_id }}/{{ taskcoursework_id }}/{{ student.id }}/{{ commit.id }}/">{{ commit.title }} ({{ commit.date_create }})</a></h4>
+			<!--h4>Название: {{ commit.title }}</h4>
+			<blockquote>
+				<p>
+					{{ commit.text }}
+				</p>
+			</blockquote>
+			<h5>Дата создания: {{ commit.date_create }}</h5>
+			<br-->
+		{% endfor %}
+	{% else %}
+		<h3>Работы не были добавлены!</h3>
+	{% endif %}
+
+{% endblock %}

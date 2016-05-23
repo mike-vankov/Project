@@ -1,0 +1,15 @@
+{% extends "main_page_teacher.html" %}
+
+{% block show_my_groups %}
+
+	<h2 class="sub-header">Мои группы в текущем семестре</h2>
+
+	{% if groups == None %}
+		<h3>Группы отсутствуют!</h3>
+	{% else %}
+		{% for key, values in groups.items %}
+			<h3><a href="/teacher/groups/{{ key.id }}/">{{ key }}</a></h3>
+		{% endfor %}
+	{% endif %}
+
+{% endblock %}

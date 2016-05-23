@@ -1,0 +1,36 @@
+{% extends "main_page_teacher.html" %}
+
+{% block show_task_course_work %}
+
+	<h2>Задание на курсовую работу/проект по предмету "{{ subject_title }}" за {{ semester }} семестр</h2>
+	{% if coursework_task == None %}
+		<h3>Задание на курсовую работу отсутствует!</h3>
+		<form action="/teacher/groups/{{ group_id }}/courseworktask/{{ subject_id }}/{{ course_id }}/{{ semester_id }}/add/" method="post">
+			{% csrf_token %}
+			<input type="submit" class="button" value="Добавить задание"></input>
+		</form>
+	{% else %}
+		<h4>{{ coursework_task.title }}</h4>
+		<blockquote>
+			<p>
+				{{ coursework_task.text }}
+			</p>
+		</blockquote>
+		<h5>Дата создания: {{ coursework_task.date_create }}</h5>
+		<h5>Дата редактирования: {{ coursework_task.date_update }}</h5>
+
+		<form action="/teacher/groups/{{ group_id }}/courseworktask/{{ subject_id }}/{{ course_id }}/{{ semester_id }}/{{ coursework_task.id }}/edit/" method="post">
+			{% csrf_token %}
+			<input type="submit" class="button" value="Редактировать"></input>
+		</form>
+		<form action="/teacher/groups/{{ group_id }}/courseworktask/{{ subject_id }}/{{ course_id }}/{{ semester_id }}/{{ coursework_task.id }}/delete/" method="post">
+			{% csrf_token %}
+			<input type="submit" class="button" value="Удалить"></input>
+		</form>
+		<form action="/teacher/groups/{{ group_id }}/courseworktask/{{ subject_id }}/{{ course_id }}/{{ semester_id }}/{{ coursework_task.id }}/" method="post">
+			{% csrf_token %}
+			<input type="submit" class="button" value="Просмотр работ"></input>
+		</form>
+	{% endif %}
+
+{% endblock %}

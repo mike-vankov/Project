@@ -1,0 +1,11 @@
+{% extends "main_page_teacher.html" %}
+
+{% block show_students_course_work %}
+
+	<h2>Отправленные курсовые работы/проекты по предмету "{{ subject_title }}" за {{ semester }} семестр</h2>
+	<h2>Группа: {{ group.title }}</h2>
+	{% for key, value in students.items %}
+		<h4><a href="/teacher/groups/{{ group.id }}/courseworktask/{{ subject_id }}/{{ course_id }}/{{ semester_id }}/{{ coursework_task.id }}/{{ key.id }}/">{{ key }} (обновление {{ value.date_update }})</a></h4>
+	{% endfor %}
+
+{% endblock %}

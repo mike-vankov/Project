@@ -1,0 +1,16 @@
+{% extends "main_page_teacher.html" %}
+
+{% block edit_task_course_work %}
+
+	<h2>Отредактировать задание на курсовую работу/проект по предмету "{{ subject_title }}" за {{ semester }} семестр</h2>
+	<form action="/teacher/groups/{{ group_id }}/courseworktask/{{ subject_id }}/{{ course_id }}/{{ semester_id }}/{{ taskcoursework_id }}/edit/update/" method="post">
+		{% csrf_token %}
+		{{ form }}
+		<input type="submit" class="button" value="Сохранить"></input>
+	</form>
+	<form action="/teacher/groups/{{ group_id }}/courseworktask/{{ subject_id }}/{{ course_id }}/{{ semester_id }}/" method="post">
+		{% csrf_token %}
+		<input type="submit" class="button" value="Отмена"></input>
+	</form>
+
+{% endblock %}
